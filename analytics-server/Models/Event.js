@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
 const Event = mongoose.Schema({
-    title: String,
-    parts: Array,
-    // demo: Map
+    session_id: String,
+    name: String,
+    distinct_user_id: String,
+    date: Number,
+    os: String,
+    geolocation: Map,
+    url: String,
 });
 
 module.exports = mongoose.model('Event', Event);

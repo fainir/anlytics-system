@@ -10,15 +10,21 @@ mongoose.connect(
     }
 );
 
-// app.post('/tutorial', (req, res)=>{
-//     const tutorial = new Tutorial({
-//         title: req.body.title,
-//         parts: req.body.parts,
-//     })
-//     tutorial.save().then(doc=>{
-//         res.send('Tutorial added');
-//     })
-// });
+app.post('/event', (req, res)=>{
+    const evet = new Event({
+        session_id: req.body.session_id,
+        name: req.body.name,
+        distinct_user_id: req.body.distinct_user_id,
+        date: req.body.date,
+        os: req.body.os,
+        browser: req.body.browser,
+        geolocation: req.body.geolocation,
+        url: req.body.url,
+    })
+    evet.save().then(doc=>{
+        res.send('event added');
+    })
+});
 
 
 // app.get('/tutorials', (req, res)=>{
@@ -55,4 +61,4 @@ mongoose.connect(
 // });
 
 
-app.listen(3000);
+app.listen(3001);
