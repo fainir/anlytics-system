@@ -1,0 +1,19 @@
+{
+  "name": "analytics-server",
+  "version": "1.0.0",
+  "description": "Server for Analytics system",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "anlytics",
+    "event-based"
+  ],
+  "author": "Nir Fainshtein",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.13"
+  }
+}
