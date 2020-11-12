@@ -1,5 +1,9 @@
 import {Grid} from '@material-ui/core'
 import SessionByDay from './SessionByDay'
+import SessionByHour from './SessionByHour'
+import RetentionCohort from './RetentionCohort'
+import TileContainer from './TileContainer';
+
 function App() {
   return (
     <Grid
@@ -8,17 +12,21 @@ function App() {
       justify="center"
       alignItems="flex-start"
       >
-        <div style={{margin: 5, border: '1px solid black', width: '100%', maxWidth: 400, height: 300}}>
+        <TileContainer>
           <SessionByDay />
-        </div>
-        <div style={{margin: 5, width: '400px', height:'300px', border: '1px solid black'}}></div>
-        <div style={{margin: 5, width: '300px', height:'250px', border: '1px solid black'}}></div>
-        <div style={{margin: 5, width: '300px', height:'200px', border: '1px solid black'}}></div>
-        <div style={{margin: 5, width: '300px', height:'200px', border: '1px solid black'}}></div>
-        <div style={{margin: 5, width: '400px', height:'300px', border: '1px solid black'}}></div>
-        <div style={{margin: 5, width: '300px', height:'250px', border: '1px solid black'}}></div>
-        <div style={{margin: 5, width: '300px', height:'200px', border: '1px solid black'}}></div>
-  </Grid>
+        </TileContainer>
+        <TileContainer>
+          <SessionByHour />
+        </TileContainer>
+        <TileContainer>
+          <RetentionCohort />
+        </TileContainer>
+        <TileContainer>
+        </TileContainer>
+        <TileContainer>
+        </TileContainer>
+       
+         </Grid>
   );
 }
 

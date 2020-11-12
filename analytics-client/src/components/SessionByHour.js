@@ -5,23 +5,29 @@ import {
   
   const demoData = [
     {
-      date: '2020/09/20', sessions: 50,
+      time: '00:00', sessions: 50,
     },
     {
-        date: '2020/09/21', sessions: 100,
+      time: '01:00', sessions: 100,
     },
     {
-        date: '2020/09/22', sessions: 200,
+      time: '02:00', sessions: 200,
     },
     {
-        date: '2020/09/23', sessions: 300,
+      time: '03:00', sessions: 300,
+    },
+    {
+      time: '04:00', sessions: 1000,
+    },
+    {
+      time: '05:00', sessions: 500,
     },
   ];
 
-function SessionByDay() {
+function SessionByHour() {
 const [data, setData] = useState([]);
 useEffect(()=>{
-    // axios.get('http://localhost:3001/sessionsByDay')
+    // axios.get('http://localhost:3001/sessionsByHour')
     // .then((results)=>{
     //     setDate(results);
     // });
@@ -37,7 +43,7 @@ useEffect(()=>{
     }}
   >
     <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="date" />
+    <XAxis dataKey="time" />
     <YAxis />
     <Tooltip />
     <Legend />
@@ -47,4 +53,4 @@ useEffect(()=>{
   );
 }
 
-export default SessionByDay;
+export default SessionByHour;
