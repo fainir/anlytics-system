@@ -2,30 +2,15 @@ import {useEffect, useState} from 'react';
 import {
     LineChart, ResponsiveContainer, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   } from 'recharts';
+import axios from 'axios';
   
-  const demoData = [
-    {
-      date: '2020/09/20', sessions: 50,
-    },
-    {
-        date: '2020/09/21', sessions: 100,
-    },
-    {
-        date: '2020/09/22', sessions: 200,
-    },
-    {
-        date: '2020/09/23', sessions: 300,
-    },
-  ];
-
 function SessionByDay() {
 const [data, setData] = useState([]);
 useEffect(()=>{
-    // axios.get('http://localhost:3001/sessionsByDay')
-    // .then((results)=>{
-    //     setDate(results);
-    // });
-    setData(demoData);
+    axios.get('http://localhost:3001/sessionsByDay')
+    .then((results)=>{
+      setData(results.data);
+    });
 }, []); 
 
   return (

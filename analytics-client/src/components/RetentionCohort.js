@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 import {Typography, Grid} from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
+import axios from 'axios';
+
   const demoData = [
     {
       startDate: new Date(2020,1,22),
@@ -56,13 +58,21 @@ const getTotalUsers = (data) =>{
 };
 
 useEffect(()=>{
-    // axios.get('http://localhost:3001/retentionCohort')
-    // .then((results)=>{
-    //     setDate(results);
-    // });
-    setData(demoData);
-    setavgData(getAvg(demoData));
-    setTotalUsers(getTotalUsers(demoData));
+    axios.get('http://localhost:3001/retentionCohort')
+    .then((results)=>{
+      debugger;
+      let data = results.data.map(obj => {
+        return {
+          startDate: new Date(obj.startDate),
+          endDate: new Date(obj.endDate),
+          newUsers: obj.newUsers,
+          retention: obj.retention
+        };
+      })
+      setData(data);
+      setavgData(getAvg(data));
+      setTotalUsers(getTotalUsers(data));
+      });
 }, []); 
 
   return (

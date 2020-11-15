@@ -2,36 +2,15 @@ import {useEffect, useState} from 'react';
 import {
     LineChart, ResponsiveContainer, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   } from 'recharts';
-  
-  const demoData = [
-    {
-      time: '00:00', sessions: 50,
-    },
-    {
-      time: '01:00', sessions: 100,
-    },
-    {
-      time: '02:00', sessions: 200,
-    },
-    {
-      time: '03:00', sessions: 300,
-    },
-    {
-      time: '04:00', sessions: 1000,
-    },
-    {
-      time: '05:00', sessions: 500,
-    },
-  ];
+import axios from 'axios';  
 
 function SessionByHour() {
 const [data, setData] = useState([]);
 useEffect(()=>{
-    // axios.get('http://localhost:3001/sessionsByHour')
-    // .then((results)=>{
-    //     setDate(results);
-    // });
-    setData(demoData);
+    axios.get('http://localhost:3001/sessionsByHour')
+    .then((results)=>{
+        setData(results.data);
+    });
 }, []); 
 
   return (
