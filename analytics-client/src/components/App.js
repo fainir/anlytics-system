@@ -3,8 +3,12 @@ import SessionByDay from './SessionByDay'
 import SessionByHour from './SessionByHour'
 import RetentionCohort from './RetentionCohort'
 import TileContainer from './TileContainer';
+import OSPie from './OSPie';
+import Map from './Map';
+import AllEvents from './AllEvents';
 
 function App() {
+
   return (
     <Grid
       container
@@ -22,8 +26,14 @@ function App() {
           <RetentionCohort />
         </TileContainer>
         <TileContainer>
+          <OSPie />
         </TileContainer>
         <TileContainer>
+          <Map />
+        </TileContainer>
+       
+        <TileContainer>
+          <AllEvents />
         </TileContainer>
        
          </Grid>

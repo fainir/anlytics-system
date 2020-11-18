@@ -60,7 +60,6 @@ const getTotalUsers = (data) =>{
 useEffect(()=>{
     axios.get('http://localhost:3001/retentionCohort')
     .then((results)=>{
-      debugger;
       let data = results.data.map(obj => {
         return {
           startDate: new Date(obj.startDate),

@@ -87,10 +87,10 @@ fakeEvents = () => {
             browser: browsers[Math.floor(Math.random() * browsers.length)],
             geolocation: {    
                 location: {
-                    lat: 81 + i * 100,
-                    lng: 86 + i * 100
+                    lat: 81 + i,
+                    lng: 86 + i
                 },  
-                accuracy: 1708 + i * 100
+                accuracy: 1708
             },
             url: urls[Math.floor(Math.random() * urls.length)],
         })
@@ -201,6 +201,37 @@ app.get('/retentionCohort', (req, res)=>{
             
         }
         res.send(retention);
+    });
+});
+
+app.get('/osPie', (req, res)=>{
+    const aggregatorOpts = [
+    {
+        $group: {
+            _id: "$os",
+            count: { $sum: 1 }
+        }
+    }
+];
+
+Event.aggregate(aggregatorOpts).exec().then(docs=>{
+        
+        res.send(docs.map(event=>{
+            return (
+                {
+                    name: event._id,
+                    value: event.count,
+                }
+            );
+        }));
+    });
+});
+
+app.get('/locations', (req, res)=>{
+
+Event.find({})
+    .select('geolocation.location').exec().then(docs=>{
+        res.send(docs);
     });
 });
 
