@@ -9,5 +9,15 @@ const Event = mongoose.Schema({
     geolocation: Map,
     url: String,
 });
+Event.index({ 
+    session_id: 'text',
+    name: 'text',
+    distinct_user_id: 'text',
+    date: 'text',
+    os: 'text',
+    geolocation: 'text',
+    url: 'text',
+ });
 
 module.exports = mongoose.model('Event', Event);
+

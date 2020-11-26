@@ -147,6 +147,32 @@ app.get('/sessionsByDay', (req, res)=>{
 });
 
 
+app.get('/search', (req, res)=>{
+    let serchTerm = req.query.q;
+    let sort = req.query.sort;
+    let os = req.query.os;
+    let query = Event.find({ $text : { $search : serchTerm } }).limit(50);
+    if(os){
+        query.where({os: os});
+    }
+    if(sort){
+        let sortBy = '';
+        if(sort === 'date') {
+            console.log(sort);
+            sortBy = 'date';
+        } else if(sort === 'alphabetical'){
+            sortBy = 'name';
+        }
+        query.sort(sortBy);
+    }
+    query.exec().then(events => {
+            res.send(events);
+        }
+    );
+});
+
+
+
 
 app.get('/sessionsByHour', (req, res)=>{
 
